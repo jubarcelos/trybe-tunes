@@ -2,6 +2,7 @@ import React from 'react';
 
 class Form extends React.Component {
   render() {
+    // const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3, cardImage, cardRare, cardTrunfo, hasTrunfo, isSaveButtonDisabled, onInputChange(), onSaveButtonClick()}
     return (
       <div>
         <form action="">
@@ -9,68 +10,79 @@ class Form extends React.Component {
             <input
               id="cardName"
               data-testid="name-input"
-              type="text"/>
+              type="text"
+            />
           </label>
           <label
-            htmlFor="CardDescription">
+            htmlFor="CardDescription"
+          >
             <textarea
               id="cardDescription"
-              data-testid="description-input"/>
+              data-testid="description-input"
+            />
           </label>
 
           <label
-            htmlFor="CardAttr1">
+            htmlFor="CardAttr1"
+          >
             <input
               id="cardAttr1"
               data-testid="attr1-input"
-              type="number" />
+              type="number"
+            />
           </label>
 
           <label
-            htmlFor="CardAttr2">
+            htmlFor="CardAttr2"
+          >
             <input
               id="cardAttr2"
               data-testid="attr2-input"
-              type="number" />
+              type="number"
+            />
           </label>
 
           <label
-            htmlFor="CardAttr3">
+            htmlFor="CardAttr3"
+          >
             <input
               id="cardAttr3"
               data-testid="attr3-input"
-              type="number" />
+              type="number"
+            />
           </label>
           <label htmlFor="cardImage">
             <input
               id="cardImage"
               data-testid="image-input"
-              type="text" />
+              type="text"
+            />
           </label>
           <label htmlFor="cardRare">
             <select
               data-testid="rare-input"
               name="cardRare"
-              id="cardRare">
+              id="cardRare"
+            >
               <option value="normal">normal</option>
               <option value="raro">raro</option>
-              <option value="muito-raro">muito raro</option>
+              <option value="muito raro">muito raro</option>
             </select>
           </label>
-          <label htmlFor="superTrunfo">
+          <label htmlFor="cardTrunfo">
             <input
               data-testid="trunfo-input"
               type="checkbox"
-              id="superTrunfo" />
+              id="superTrunfo"
+            />
           </label>
-          <label htmlFor="save">
-            <button
-              id="save"
-              data-testid="save-button"
-              type="submit">
-              Salvar
-            </button>
-          </label>
+          <button
+            id="save"
+            data-testid="save-button"
+            type="submit"
+          >
+            Salvar
+          </button>
         </form>
       </div>
     );
