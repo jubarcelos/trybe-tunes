@@ -17,79 +17,86 @@ class Form extends React.Component {
       onInputChange,
       onSaveButtonClick } = this.props;
     return (
-      <div>
-        <form action="">
+      <form action="">
+        <fieldset>
           <label htmlFor="cardName">
+            Nome:
             <input
               id="cardName"
               data-testid="name-input"
               type="text"
               value={ cardName }
-              onChange={ onInputChange }
+              callback={ onInputChange }
             />
           </label>
           <label
             htmlFor="CardDescription"
           >
+            Aqui algumas curiosidades:
             <textarea
               id="cardDescription"
               data-testid="description-input"
               value={ cardDescription }
-              onChange={ onInputChange }
+              callback={ onInputChange }
             />
           </label>
 
           <label
             htmlFor="CardAttr1"
           >
+            Primeiro atributo:
             <input
               id="cardAttr1"
               data-testid="attr1-input"
               type="number"
               value={ cardAttr1 }
-              onChange={ onInputChange }
+              callback={ onInputChange }
             />
           </label>
 
           <label
             htmlFor="CardAttr2"
           >
+            Segundo atributo:
             <input
               id="cardAttr2"
               data-testid="attr2-input"
               type="number"
               value={ cardAttr2 }
-              onChange={ onInputChange }
+              callback={ onInputChange }
             />
           </label>
 
           <label
             htmlFor="CardAttr3"
           >
+            Terceiro atributo:
             <input
               id="cardAttr3"
               data-testid="attr3-input"
               type="number"
               value={ cardAttr3 }
-              onChange={ onInputChange }
+              callback={ onInputChange }
             />
           </label>
           <label htmlFor="cardImage">
+            Insira a url com a imagem
             <input
               id="cardImage"
               data-testid="image-input"
               type="text"
               value={ cardImage }
-              onChange={ onInputChange }
+              callback={ onInputChange }
             />
           </label>
           <label htmlFor="cardRare">
+            Raridade:
             <select
               data-testid="rare-input"
               name="cardRare"
               id="cardRare"
               value={ cardRare }
-              onChange={ onInputChange }
+              callback={ onInputChange }
             >
               <option value="normal">normal</option>
               <option value="raro">raro</option>
@@ -97,12 +104,13 @@ class Form extends React.Component {
             </select>
           </label>
           <label htmlFor="cardTrunfo">
+            É super trunfo?
             <input
               data-testid="trunfo-input"
               type="checkbox"
               id="cardTrunfo"
               checked={ cardTrunfo }
-              onChange={ onInputChange }
+              callback={ onInputChange }
             />
           </label>
           <button
@@ -114,8 +122,8 @@ class Form extends React.Component {
           >
             Salvar
           </button>
-        </form>
-      </div>
+        </fieldset>
+      </form>
     );
   }
 }
