@@ -1,7 +1,6 @@
 import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
-// import PropTypes from 'prop-types';
 
 class App extends React.Component {
   constructor() {
@@ -18,6 +17,8 @@ class App extends React.Component {
       hasTrunfo: false,
       isSaveButtonDisabled: false,
     };
+
+    this.onInputChange = this.onInputChange.bind(this);
   }
   // função para definir que no checkbox não se pega o value, mas sim o checked. Sem um checkbox era só tirar o ternário.
   // como eu fiz arrow function, não preciso fazer o bind, já está declarado no this.
@@ -30,6 +31,8 @@ class App extends React.Component {
       [name]: value,
     });
   }
+
+  onSaveButtonClick = () => { }
 
   render() {
     const {
@@ -57,14 +60,14 @@ class App extends React.Component {
       hasTrunfo,
       isSaveButtonDisabled,
     };
-
     return (
       <div>
         <h1>Tryunfo</h1>
         <Form
           { ...atualStates }
           // adiciona um novo objeto
-          onInputChange={ onInputChange }
+          onInputChange={ this.onInputChange }
+          onSaveButtonClick={ this.onSaveButtonClick }
         />
         <Card { ...atualStates } />
       </div>
@@ -73,3 +76,5 @@ class App extends React.Component {
 }
 
 export default App;
+
+// no CR o Gabis deu a dica de armazenar os dados do state em uma variável para não reatribuir e o Guilherme Augusto me ajudou a entender melhor essa forma de fazer.

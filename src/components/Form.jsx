@@ -26,7 +26,7 @@ class Form extends React.Component {
               data-testid="name-input"
               type="text"
               value={ cardName }
-              callback={ onInputChange }
+              onChange={ onInputChange }
             />
           </label>
           <label
@@ -37,7 +37,7 @@ class Form extends React.Component {
               id="cardDescription"
               data-testid="description-input"
               value={ cardDescription }
-              callback={ onInputChange }
+              onChange={ onInputChange }
             />
           </label>
 
@@ -50,7 +50,7 @@ class Form extends React.Component {
               data-testid="attr1-input"
               type="number"
               value={ cardAttr1 }
-              callback={ onInputChange }
+              onChange={ onInputChange }
             />
           </label>
 
@@ -63,7 +63,7 @@ class Form extends React.Component {
               data-testid="attr2-input"
               type="number"
               value={ cardAttr2 }
-              callback={ onInputChange }
+              onChange={ onInputChange }
             />
           </label>
 
@@ -76,7 +76,7 @@ class Form extends React.Component {
               data-testid="attr3-input"
               type="number"
               value={ cardAttr3 }
-              callback={ onInputChange }
+              onChange={ onInputChange }
             />
           </label>
           <label htmlFor="cardImage">
@@ -86,7 +86,7 @@ class Form extends React.Component {
               data-testid="image-input"
               type="text"
               value={ cardImage }
-              callback={ onInputChange }
+              onChange={ onInputChange }
             />
           </label>
           <label htmlFor="cardRare">
@@ -96,7 +96,7 @@ class Form extends React.Component {
               name="cardRare"
               id="cardRare"
               value={ cardRare }
-              callback={ onInputChange }
+              onChange={ onInputChange }
             >
               <option value="normal">normal</option>
               <option value="raro">raro</option>
@@ -110,7 +110,7 @@ class Form extends React.Component {
               type="checkbox"
               id="cardTrunfo"
               checked={ cardTrunfo }
-              callback={ onInputChange }
+              onChange={ onInputChange }
             />
           </label>
           <button
