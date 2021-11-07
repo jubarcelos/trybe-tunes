@@ -23,6 +23,7 @@ class Form extends React.Component {
             Nome:
             <input
               id="cardName"
+              name="cardName"
               data-testid="name-input"
               type="text"
               value={ cardName }
@@ -35,6 +36,7 @@ class Form extends React.Component {
             Aqui algumas curiosidades:
             <textarea
               id="cardDescription"
+              name="cardDescription"
               data-testid="description-input"
               value={ cardDescription }
               onChange={ onInputChange }
@@ -47,6 +49,7 @@ class Form extends React.Component {
             Primeiro atributo:
             <input
               id="cardAttr1"
+              name="cardAttr1"
               data-testid="attr1-input"
               type="number"
               value={ cardAttr1 }
@@ -60,6 +63,7 @@ class Form extends React.Component {
             Segundo atributo:
             <input
               id="cardAttr2"
+              name="cardAttr2"
               data-testid="attr2-input"
               type="number"
               value={ cardAttr2 }
@@ -73,6 +77,7 @@ class Form extends React.Component {
             Terceiro atributo:
             <input
               id="cardAttr3"
+              name="cardAttr3"
               data-testid="attr3-input"
               type="number"
               value={ cardAttr3 }
@@ -83,6 +88,7 @@ class Form extends React.Component {
             Insira a url com a imagem
             <input
               id="cardImage"
+              name="cardImage"
               data-testid="image-input"
               type="text"
               value={ cardImage }
@@ -109,12 +115,14 @@ class Form extends React.Component {
               data-testid="trunfo-input"
               type="checkbox"
               id="cardTrunfo"
+              name="cardTrunfo"
               checked={ cardTrunfo }
               onChange={ onInputChange }
             />
           </label>
           <button
             id="save"
+            name="save"
             data-testid="save-button"
             type="submit"
             disabled={ isSaveButtonDisabled }

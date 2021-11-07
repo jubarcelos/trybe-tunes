@@ -18,7 +18,7 @@ class App extends React.Component {
       isSaveButtonDisabled: false,
     };
 
-    this.onInputChange = this.onInputChange.bind(this);
+    // this.onInputChange = this.onInputChange.bind(this);
   }
   // função para definir que no checkbox não se pega o value, mas sim o checked. Sem um checkbox era só tirar o ternário.
   // como eu fiz arrow function, não preciso fazer o bind, já está declarado no this.
