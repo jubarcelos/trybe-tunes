@@ -16,6 +16,7 @@ class App extends React.Component {
       cardTrunfo: false,
       hasTrunfo: false,
       isSaveButtonDisabled: true,
+      allCards: [],
     };
   }
   // função para definir que no checkbox não se pega o value, mas sim o checked. Sem um checkbox era só tirar o ternário.
@@ -30,7 +31,52 @@ class App extends React.Component {
     });
   };
 
-  onSaveButtonClick = () => { }
+  onSaveButtonClick = (event) => {
+    // impede que limpe imediatamente ao clique. Dai abre as informações contidas no preventDefault.allCards e adiciona o novo objeto.
+    event.preventDefault();
+    this.setState((preventDefault) => (
+      { allCards: [...preventDefault.allCards, this.newCard()] }
+    ));
+    this.clearForm();
+  };
+
+  newCard = () => {
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+    } = this.state;
+
+    const actualCreateCard = {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+    };
+
+    return actualCreateCard;
+  };
+
+  clearForm = () => this.setState((
+    {
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
+      cardImage: '',
+      cardRare: 'normal',
+      isSaveButtonDisabled: true,
+    }));
 
   formValidation = () => {
     let {
@@ -38,8 +84,8 @@ class App extends React.Component {
       cardAttr2,
       cardAttr3,
     } = this.state;
-
     const atualState = Object.values(this.state);
+
     const maxSolo = 90;
     const minSolo = 0;
     const maxValueTotal = 210;
