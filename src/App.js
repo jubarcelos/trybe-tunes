@@ -8,9 +8,9 @@ class App extends React.Component {
     this.state = {
       cardName: '',
       cardDescription: '',
-      cardAttr1: '',
-      cardAttr2: '',
-      cardAttr3: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: false,
@@ -33,22 +33,16 @@ class App extends React.Component {
   onSaveButtonClick = () => { }
 
   formValidation = () => {
-    const {
-      cardName,
-      cardDescription,
-      cardImage,
-    } = this.state;
-
     let {
       cardAttr1,
       cardAttr2,
       cardAttr3,
     } = this.state;
 
+    const atualState = Object.values(this.state);
     const maxSolo = 90;
     const minSolo = 0;
     const maxValueTotal = 210;
-    const atualState = Object.values(this.state);
 
     cardAttr1 = Number(cardAttr1);
     cardAttr2 = Number(cardAttr2);
