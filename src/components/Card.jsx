@@ -12,6 +12,7 @@ class Card extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      hasTrunfo,
     } = this.props;
     return (
       <section>
@@ -29,18 +30,23 @@ class Card extends React.Component {
         </p>
         <div>
           <p data-testid="attr1-card">
+            Atributo 01 . . . . . .
             { cardAttr1 }
           </p>
           <p data-testid="attr2-card">
+            Atributo 02 . . . . . .
             { cardAttr2 }
           </p>
           <p data-testid="attr3-card">
+            Atributo 03 . . . . . .
             { cardAttr3 }
           </p>
         </div>
         <p data-testid="rare-card">
+          Raridade:
           { cardRare }
         </p>
+
         { cardTrunfo ? <p data-testid="trunfo-card">Super Trunfo</p> : null }
 
       </section>
@@ -59,4 +65,5 @@ Card.propTypes = {
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
+  hasTrunfo: PropTypes.bool.isRequired,
 };

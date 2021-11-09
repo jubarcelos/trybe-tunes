@@ -1,6 +1,7 @@
 import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
+import AlbumCards from './components/AlbumCards';
 
 class App extends React.Component {
   constructor() {
@@ -38,7 +39,7 @@ class App extends React.Component {
       { allCards: [...preventDefault.allCards, this.newCard()] }
     ));
     this.clearForm();
-    if (cardTrunfo) this.trunfoIsChecked();
+    this.trunfoIsChecked();
   };
 
   newCard = () => {
@@ -51,6 +52,7 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      hasTrunfo,
     } = this.state;
 
     const actualCreateCard = {
@@ -62,6 +64,7 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      hasTrunfo,
     };
 
     return actualCreateCard;
@@ -76,6 +79,7 @@ class App extends React.Component {
       cardAttr3: '0',
       cardImage: '',
       cardRare: 'normal',
+      cardTrunfo: false,
       isSaveButtonDisabled: true,
     }));
 
@@ -125,6 +129,7 @@ class App extends React.Component {
       cardTrunfo,
       hasTrunfo,
       isSaveButtonDisabled,
+      allCards,
     } = this.state;
 
     const atualStates = {
@@ -139,6 +144,7 @@ class App extends React.Component {
       hasTrunfo,
       isSaveButtonDisabled,
     };
+
     return (
       <div>
         <h1>Tryunfo</h1>
@@ -148,11 +154,25 @@ class App extends React.Component {
           onInputChange={ this.onInputChange }
           onSaveButtonClick={ this.onSaveButtonClick }
         />
-        <Card { ...atualStates } />
+        <section className="preview">
+          <p className="p-title">Pré-visualização</p>
+          <Card
+            cardName={ cardName }
+            cardDescription={ cardDescription }
+            cardAttr1={ cardAttr1 }
+            cardAttr2={ cardAttr2 }
+            cardAttr3={ cardAttr3 }
+            cardImage={ cardImage }
+            cardRare={ cardRare }
+            cardTrunfo={ cardTrunfo }
+          />
+        </section>
+        <AlbumCards
+          allCards={ allCards }
+        />
       </div>
     );
   }
 }
-// no CR o Gabis deu a dica de armazenar os dados do state em uma variável para não reatribuir e o Guilherme Augusto me ajudou a entender melhor essa forma de fazer.
 
 export default App;

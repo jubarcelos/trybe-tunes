@@ -22,7 +22,7 @@ class Form extends React.Component {
 
     const trunfoInput = (
       <label htmlFor="cardTrunfo">
-        É super trunfo?
+        É a super trunfo?
         <input
           data-testid="trunfo-input"
           type="checkbox"
@@ -36,7 +36,7 @@ class Form extends React.Component {
 
     const haveOneTrunfo = (
       <span>
-        Você já tem um Super Trunfo em seu baralho
+        Você já tem um Super Trunfo em seu baralho.
       </span>
     );
 
