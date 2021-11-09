@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// As variáveis precisavam estar dentro do render porque usa as props que são chamadas na classe. E quando cria uma lógica com o  JS puro preciso estar fora do return. Salva novamente pelo mestre Guilherme Augusto.
+
 class Form extends React.Component {
   render() {
     const {
@@ -12,10 +14,32 @@ class Form extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      // hasTrunfo,
+      hasTrunfo,
       isSaveButtonDisabled,
       onInputChange,
-      onSaveButtonClick } = this.props;
+      onSaveButtonClick,
+    } = this.props;
+
+    const trunfoInput = (
+      <label htmlFor="cardTrunfo">
+        É super trunfo?
+        <input
+          data-testid="trunfo-input"
+          type="checkbox"
+          id="cardTrunfo"
+          name="cardTrunfo"
+          checked={ cardTrunfo }
+          onChange={ onInputChange }
+        />
+      </label>
+    );
+
+    const haveOneTrunfo = (
+      <span>
+        Você já tem um Super Trunfo em seu baralho
+      </span>
+    );
+
     return (
       <form action="">
         <fieldset>
@@ -109,17 +133,9 @@ class Form extends React.Component {
               <option value="muito raro">muito raro</option>
             </select>
           </label>
-          <label htmlFor="cardTrunfo">
-            É super trunfo?
-            <input
-              data-testid="trunfo-input"
-              type="checkbox"
-              id="cardTrunfo"
-              name="cardTrunfo"
-              checked={ cardTrunfo }
-              onChange={ onInputChange }
-            />
-          </label>
+
+          { hasTrunfo ? haveOneTrunfo : trunfoInput }
+
           <button
             id="save"
             name="save"
@@ -147,7 +163,7 @@ Form.propTypes = {
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
-  // hasTrunfo: PropTypes.bool.isRequired,
+  hasTrunfo: PropTypes.bool.isRequired,
   isSaveButtonDisabled: PropTypes.bool.isRequired,
   onInputChange: PropTypes.func.isRequired,
   onSaveButtonClick: PropTypes.func.isRequired,

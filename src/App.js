@@ -38,6 +38,7 @@ class App extends React.Component {
       { allCards: [...preventDefault.allCards, this.newCard()] }
     ));
     this.clearForm();
+    if (cardTrunfo) this.trunfoIsChecked();
   };
 
   newCard = () => {
@@ -101,6 +102,15 @@ class App extends React.Component {
     if (cardAttr3 < minSolo || cardAttr3 > maxSolo || cardAttr3 === '') return true;
     if ((cardAttr1 + cardAttr2 + cardAttr3) > maxValueTotal) return true;
     return false;
+  }
+
+  trunfoIsChecked = () => {
+    const { cardTrunfo } = this.state;
+    if (cardTrunfo) {
+      this.setState(
+        { hasTrunfo: true },
+      );
+    }
   }
 
   render() {
