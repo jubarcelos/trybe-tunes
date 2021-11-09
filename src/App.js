@@ -156,16 +156,7 @@ class App extends React.Component {
         />
         <section className="preview">
           <p className="p-title">Pré-visualização</p>
-          <Card
-            cardName={ cardName }
-            cardDescription={ cardDescription }
-            cardAttr1={ cardAttr1 }
-            cardAttr2={ cardAttr2 }
-            cardAttr3={ cardAttr3 }
-            cardImage={ cardImage }
-            cardRare={ cardRare }
-            cardTrunfo={ cardTrunfo }
-          />
+          <Card { ...atualStates } />
         </section>
         <AlbumCards
           allCards={ allCards }
