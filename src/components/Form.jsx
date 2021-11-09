@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// As variáveis precisavam estar dentro do render porque usa as props que são chamadas na classe. E quando cria uma lógica com o  JS puro preciso estar fora do return. Salva novamente pelo mestre Guilherme Augusto.
-
 class Form extends React.Component {
   render() {
     const {
@@ -19,26 +17,6 @@ class Form extends React.Component {
       onInputChange,
       onSaveButtonClick,
     } = this.props;
-
-    const trunfoInput = (
-      <label htmlFor="cardTrunfo">
-        É a super trunfo?
-        <input
-          data-testid="trunfo-input"
-          type="checkbox"
-          id="cardTrunfo"
-          name="cardTrunfo"
-          checked={ cardTrunfo }
-          onChange={ onInputChange }
-        />
-      </label>
-    );
-
-    const haveOneTrunfo = (
-      <span>
-        Você já tem um Super Trunfo em seu baralho.
-      </span>
-    );
 
     return (
       <form action="">
@@ -134,7 +112,21 @@ class Form extends React.Component {
             </select>
           </label>
 
-          { hasTrunfo ? haveOneTrunfo : trunfoInput }
+          {hasTrunfo
+            ? <span> Você já tem um Super Trunfo em seu baralho.</span>
+            : (
+              <label htmlFor="cardTrunfo">
+                É a super trunfo?
+                <input
+                  data-testid="trunfo-input"
+                  type="checkbox"
+                  id="cardTrunfo"
+                  name="cardTrunfo"
+                  checked={ cardTrunfo }
+                  onChange={ onInputChange }
+                />
+              </label>
+            )}
 
           <button
             id="save"
