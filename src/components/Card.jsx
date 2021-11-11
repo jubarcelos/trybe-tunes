@@ -13,10 +13,11 @@ class Card extends React.Component {
       cardRare,
       cardTrunfo,
     } = this.props;
+
     return (
       <section>
         <p data-testid="name-card">
-          {cardName}
+          { cardName }
         </p>
 
         <img
@@ -46,13 +47,14 @@ class Card extends React.Component {
           { cardRare }
         </p>
 
-        { cardTrunfo ? <p data-testid="trunfo-card">Super Trunfo</p> : null }
+        { cardTrunfo && <p data-testid="trunfo-card">Super Trunfo</p> }
 
       </section>
+
     );
   }
 }
-
+// esse condicional do cardTrunfo que não é ternário é pq não tem um segundo valor. Dai pode substituir por &&.
 export default Card;
 
 Card.propTypes = {

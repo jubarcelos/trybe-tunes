@@ -70,18 +70,20 @@ class App extends React.Component {
     return actualCreateCard;
   };
 
-  clearForm = () => this.setState((
-    {
-      cardName: '',
-      cardDescription: '',
-      cardAttr1: '0',
-      cardAttr2: '0',
-      cardAttr3: '0',
-      cardImage: '',
-      cardRare: 'normal',
-      cardTrunfo: false,
-      isSaveButtonDisabled: true,
-    }));
+  clearForm = () => {
+    this.setState((
+      {
+        cardName: '',
+        cardDescription: '',
+        cardAttr1: '0',
+        cardAttr2: '0',
+        cardAttr3: '0',
+        cardImage: '',
+        cardRare: 'normal',
+        cardTrunfo: false,
+        isSaveButtonDisabled: true,
+      }));
+  }
 
   formValidation = () => {
     let {
@@ -89,8 +91,8 @@ class App extends React.Component {
       cardAttr2,
       cardAttr3,
     } = this.state;
-    const atualState = Object.values(this.state);
 
+    const atualState = Object.values(this.state);
     const maxSolo = 90;
     const minSolo = 0;
     const maxValueTotal = 210;
@@ -108,12 +110,25 @@ class App extends React.Component {
     return false;
   }
 
+  deleteCardClick = (atualCard) => {
+    const { allCards } = this.state;
+    const newState = allCards.filter((card) => card !== atualCard);
+    this.setState({
+      allCards: newState,
+    }, () => this.trunfoIsChecked());
+    console.log(allCards, newState);
+  }
+
   trunfoIsChecked = () => {
     const { cardTrunfo } = this.state;
     if (cardTrunfo) {
       this.setState(
         { hasTrunfo: true },
       );
+    } else {
+      this.setState({
+        hasTrunfo: false,
+      });
     }
   }
 
@@ -130,6 +145,7 @@ class App extends React.Component {
       hasTrunfo,
       isSaveButtonDisabled,
       allCards,
+      deleteCardClick,
     } = this.state;
 
     const atualStates = {
@@ -143,6 +159,7 @@ class App extends React.Component {
       cardTrunfo,
       hasTrunfo,
       isSaveButtonDisabled,
+      deleteCardClick,
     };
 
     return (
@@ -160,6 +177,7 @@ class App extends React.Component {
         </section>
         <AlbumCards
           allCards={ allCards }
+          deleteCardClick={ this.deleteCardClick }
         />
       </div>
     );
