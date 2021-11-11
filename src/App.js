@@ -34,6 +34,8 @@ class App extends React.Component {
 
   onSaveButtonClick = (event) => {
     // impede que limpe imediatamente ao clique. Dai abre as informações contidas no preventDefault.allCards e adiciona o novo objeto.
+    // dica acolhida do code Review do Gustavo.
+
     event.preventDefault();
     this.setState((preventDefault) => (
       { allCards: [...preventDefault.allCards, this.newCard()] }
@@ -100,6 +102,7 @@ class App extends React.Component {
     cardAttr1 = Number(cardAttr1);
     cardAttr2 = Number(cardAttr2);
     cardAttr3 = Number(cardAttr3);
+    // Parti do codeReview do Gustavo com o Gabis para entender essa dinâmica.
     // tentei fazer a verificação de string vazia com um if || e não passava no test, Brunão me ajudou a ver que era esse meu problema.
 
     if (atualState.some((verification) => verification === '')) return true;
@@ -110,14 +113,15 @@ class App extends React.Component {
     return false;
   }
 
+  // Emerson e Victor me ajudaram a ajustar minha lógica aqui e realocar. Estava dando muito conflito no Lint do jeito que eu havia feito.
   deleteCardClick = (atualCard) => {
     const { allCards } = this.state;
     const newState = allCards.filter((card) => card !== atualCard);
     this.setState({
       allCards: newState,
     }, () => this.trunfoIsChecked());
-    console.log(allCards, newState);
   }
+  // obtive ajuda do Victor na monitoria para concluir essa função de cheked que depois de apagar dava problemas.
 
   trunfoIsChecked = () => {
     const { cardTrunfo } = this.state;
