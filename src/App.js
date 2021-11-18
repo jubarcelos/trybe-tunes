@@ -2,6 +2,7 @@ import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
 import AlbumCards from './components/AlbumCards';
+import Filters from './components/Filters';
 
 class App extends React.Component {
   constructor() {
@@ -18,6 +19,9 @@ class App extends React.Component {
       hasTrunfo: false,
       isSaveButtonDisabled: true,
       allCards: [],
+      filterValue: '',
+      filterRare: 'todas',
+      filterTrunfo: false,
     };
   }
   // função para definir que no checkbox não se pega o value, mas sim o checked. Sem um checkbox era só tirar o ternário.
@@ -25,9 +29,9 @@ class App extends React.Component {
 
   onInputChange = ({ target }) => {
     const { name } = target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const inputValue = target.type === 'checkbox' ? target.checked : target.value;
 
-    this.setState({ [name]: value }, () => {
+    this.setState({ [name]: inputValue }, () => {
       this.setState({ isSaveButtonDisabled: this.formValidation() });
     });
   };
@@ -94,7 +98,9 @@ class App extends React.Component {
       cardAttr3,
     } = this.state;
 
-    const atualState = Object.values(this.state);
+    const { cardName, cardDescription, cardImage } = this.state;
+
+    const atualState = [cardName, cardDescription, cardImage];
     const maxSolo = 90;
     const minSolo = 0;
     const maxValueTotal = 210;
@@ -136,6 +142,26 @@ class App extends React.Component {
     }
   }
 
+  filterChange = ({ target }) => {
+    const { name, value } = target;
+    const filterValue = target.type === 'checkbox' ? target.checked : value;
+    this.setState({ [name]: filterValue }, () => {
+      this.allFilterCards();
+    });
+  };
+
+  allFilterCards = () => {
+    const { allCards, filterValue, filterRare, filterTrunfo } = this.state;
+    const trunfoCard = allCards.filter(({ cardTrunfo }) => cardTrunfo);
+
+    if (filterTrunfo) return trunfoCard;
+    let filteredCards = allCards.filter((card) => card.cardName.includes(filterValue));
+    if (filterRare !== 'todas') {
+      filteredCards = filteredCards.filter(({ cardRare }) => cardRare === filterRare);
+    }
+    return filteredCards;
+  };
+
   render() {
     const {
       cardName,
@@ -148,8 +174,10 @@ class App extends React.Component {
       cardTrunfo,
       hasTrunfo,
       isSaveButtonDisabled,
-      allCards,
       deleteCardClick,
+      filterValue,
+      filterRare,
+      filterTrunfo,
     } = this.state;
 
     const atualStates = {
@@ -175,12 +203,19 @@ class App extends React.Component {
           onInputChange={ this.onInputChange }
           onSaveButtonClick={ this.onSaveButtonClick }
         />
+        <Filters
+          filterChange={ this.filterChange }
+          filterValue={ filterValue }
+          filterRare={ filterRare }
+          filterTrunfo={ filterTrunfo }
+          // filterName={ filterName }
+        />
         <section className="preview">
           <p className="p-title">Pré-visualização</p>
           <Card { ...atualStates } />
         </section>
         <AlbumCards
-          allCards={ allCards }
+          allFilterCards={ this.allFilterCards }
           deleteCardClick={ this.deleteCardClick }
         />
       </div>

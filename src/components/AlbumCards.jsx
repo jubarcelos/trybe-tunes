@@ -4,10 +4,11 @@ import Card from './Card';
 
 class AlbumCards extends React.Component {
   render() {
-    const { allCards, deleteCardClick } = this.props;
+    const { allFilterCards, deleteCardClick } = this.props;
     return (
       <div>
-        { allCards.map((card) => (
+        {/* Para exibir todas eu só rodava o map no allCards. Agora chamo a funcao que filtra e faço o map no que retorna.      */}
+        { allFilterCards().map((card) => (
           <div key={ card.cardName }>
             <Card
               cardTitle
@@ -31,6 +32,6 @@ class AlbumCards extends React.Component {
 export default AlbumCards;
 
 AlbumCards.propTypes = {
-  allCards: PropTypes.arrayOf(PropTypes.object).isRequired,
+  allFilterCards: PropTypes.func.isRequired,
   deleteCardClick: PropTypes.func.isRequired,
 };

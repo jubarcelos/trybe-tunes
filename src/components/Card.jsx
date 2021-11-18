@@ -67,3 +67,4 @@ Card.propTypes = {
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
 };
+// essa parte estava com o pessoal da salinha 3 e pedi muita ajuda ao: Rafael, o Renan, o Brunão e Joel.
