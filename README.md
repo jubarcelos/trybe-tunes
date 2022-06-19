@@ -22,7 +22,7 @@ The objective of the project in this sprint was use selctor, filter, CSS transfo
 - Component cicle life
 - Routes
 
-* [Link to view at Github Pages]()
+* INATIVE! [Link to view at Github Pages]()
 
 ### Improviments
 
