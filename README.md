@@ -32,6 +32,7 @@ This project still in development and I have intention to do some things like:
 - [ ] Implement more interactions using Javascript.
 - [ ] Create a real stylization CSS.
 - [ ] Transform to a responsive CSS using grid, flex-box, mediaqueries.
+- [ ] Apply BEM method to structure organization.
 
 
 Tested by Trybe school.
